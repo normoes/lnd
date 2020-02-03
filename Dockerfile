@@ -47,9 +47,8 @@ RUN go get -d -v ${PROJECT_URL} \
     && cd $GOPATH/src/github.com/lightningnetwork/lnd \
     && git checkout ${BRANCH} \
     && make \
-    && make install
-
-RUN apk del .build-deps
+    && make install \
+    && apk del .build-deps
 
 FROM golang:${GO_VERSION}
 COPY --from=builder /data/su-exec /usr/local/bin/
