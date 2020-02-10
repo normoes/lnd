@@ -40,7 +40,6 @@ WORKDIR /data
 
 ARG PROJECT_URL=github.com/lightningnetwork/lnd
 ARG BRANCH=master
-ARG BUILD_PATH=/bitcoin.git/build/release/bin
 
 # lnd
 RUN go get -d -v ${PROJECT_URL} \
@@ -72,7 +71,7 @@ VOLUME ["/data"]
 
 ENV USER_ID=1000
 ENV LOG_LEVEL=debug
-ENV RPC_BIND=127.0.0.1
+ENV RPC_HOST=127.0.0.1
 ENV RPC_PORT=28081
 ENV RPC_USER=""
 ENV RPC_PASSWD=""
