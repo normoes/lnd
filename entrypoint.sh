@@ -33,7 +33,7 @@ fi
 # allow the container to be started with `--user
 if [ "$(id -u)" = 0 ]; then
   # USER_ID defaults to 1000 (Dockerfile)
-  adduser --system --group --uid "$USER_ID" --shell /bin/false lnd &> /dev/null
+  adduser -u "$USER_ID" -s /bin/false -D lnd &> /dev/null
   exec su-exec lnd $@
 fi
 
