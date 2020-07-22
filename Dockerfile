@@ -1,4 +1,4 @@
-ARG GO_VERSION="${GO_VERSION:-1.13.10-alpine3.11}"
+ARG GO_VERSION="${GO_VERSION:-1.13.12-alpine3.12}"
 FROM golang:${GO_VERSION} as dependencies1
 
 WORKDIR /data
