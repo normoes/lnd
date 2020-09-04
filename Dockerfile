@@ -40,11 +40,14 @@ WORKDIR /data
 
 ARG PROJECT_URL=github.com/lightningnetwork/lnd
 ARG BRANCH=master
+ARG BUILD_BRANCH=$BRANCH
 
 # lnd
 RUN go get -d -v ${PROJECT_URL} \
     && cd $GOPATH/src/github.com/lightningnetwork/lnd \
-    && git checkout ${BRANCH} \
+    # && git checkout ${BRANCH} \
+    && git checkout "$BUILD_BRANCH" \
+    && git submodule update --init --force \
     && make \
     && make install \
     && apk del .build-deps
